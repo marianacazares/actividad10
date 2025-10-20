@@ -1,11 +1,15 @@
-const boton = document.querySelector("#guardar");
-const nombre = document.querySelector("#nombre");
-const apellido = document.querySelector("#apellido");
-const fecha = document.querySelector("#fecha");
+let boton = document.querySelector("#guardar");
+let boton2= document.querySelector("#guardar2");
+let nombre = document.querySelector("#nombre");
+let apellido = document.querySelector("#apellido");
+let fecha = document.querySelector("#fecha");
+let id= document.querySelector("#id")
 
-export const datos = {
+export let datos = {
     boton,
+    boton2,
     nombre,
     apellido,
-    fecha
+    fecha,
+    id
 };

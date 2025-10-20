@@ -1,6 +1,12 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
-  import { getFirestore,collection, addDoc } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+  import { 
+          getFirestore,
+          collection,
+          addDoc,
+          doc,
+          setDoc
+       } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
 import { datos } from "./elementos.js";
 
@@ -19,36 +25,23 @@ import { datos } from "./elementos.js";
   const analytics = getAnalytics(app);
   const db = getFirestore(app);
 
- datos.boton.addEventListener("click",async function(e) {
-  e.preventDefault();
+datos.boton.addEventListener("click",  async function(){
+  try {
+    const docRef = await addDoc(collection(db, "users"), {
+        first: datos.nombre.value,
+        last: datos.apellido.value,
+        born: Number(datos.fecha.value)
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+})
 
-  try{
-    const nombre = datos.nombre?.value || "";
-    const apellido = datos.apellido?.value || "";
-    const fechaStr = datos.fecha?.value || "";
-    const fechaNumero = new Date(fechaStr).getTime();
-
-     if (!nombre || !apellido || !fechaStr) {
-        alert("Completa todos los campos");
-        return;
-      }
-  const docRef = await addDoc(collection(db, "users"), {
-        first: nombre,
-        last: apellido,
-        born: fechaNumero,    
- });
-
-  console.log("Document written with ID: ", docRef.id);
-      alert("Información guardada correctamente.");
-
-
-      if (datos.nombre) datos.nombre.value = "";
-      if (datos.apellido) datos.apellido.value = "";
-      if (datos.fecha) datos.fecha.value = "";
-
-} catch (e) {
-  console.error("Error adding document:", e);
-  alert("Error al guardar");
-}
+datos.boton2.addEventListener("click",async function() {
+  await setDoc(doc(db, "cities", datos.id.value), {
+     first: datos.nombre.value,
+     last: datos.apellido.value,
+     born: Number(datos.fecha.value)
 });
-
+})
