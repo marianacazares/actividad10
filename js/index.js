@@ -5,7 +5,8 @@
           collection,
           addDoc,
           doc,
-          setDoc
+          setDoc,
+          getDoc
        } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
 import { datos } from "./elementos.js";
@@ -25,18 +26,6 @@ import { datos } from "./elementos.js";
   const analytics = getAnalytics(app);
   const db = getFirestore(app);
 
-datos.boton.addEventListener("click",  async function(){
-  try {
-    const docRef = await addDoc(collection(db, "users"), {
-        first: datos.nombre.value,
-        last: datos.apellido.value,
-        born: Number(datos.fecha.value)
-    });
-    console.log("Document written with ID: ", docRef.id);
-  } catch (e) {
-    console.error("Error adding document: ", e);
-  }
-})
 
 datos.boton2.addEventListener("click",async function() {
   await setDoc(doc(db, "cities", datos.id.value), {
@@ -45,3 +34,19 @@ datos.boton2.addEventListener("click",async function() {
      born: Number(datos.fecha.value)
 });
 })
+//Leer documento*******************************************
+
+datos.buscar.addEventListener("click", async function () {
+  const docRef = doc(db, datos.inputCollection.value, datos.inputId.value);
+const docSnap = await getDoc(docRef);
+
+if (docSnap.exists()) {
+  datos.resultado.textContent= `Nombre : ${docSnap.data().first} 
+                                Apellido: ${docSnap.data().last} 
+                                Fecha de Nacimiento: ${docSnap.data().born}`;
+  console.log("Document data:", docSnap.data());
+} else {
+  console.log("No such document!");
+}
+})
+

@@ -10,12 +10,19 @@
 <body>
    
 <h1>Formulario</h1>
-    <input type="text" id="id" placeholder="12345">
-    <input type="text" id="nombre" placeholder="Elizabeth">
-    <input type="text" id="apellido" placeholder="Ramirez">
-    <input type="number"id="fecha" placeholder="1981">
-    <button id="guardar">GUARDAR ADDDOC</button>
-    <button id="guardar2">GUARDAR SETDOC</button>
+    <div class="contenedor">
+        <input type="text" id="id" placeholder="12345">
+        <input type="text" id="nombre" placeholder="Elizabeth">
+        <input type="text" id="apellido" placeholder="Ramirez">
+        <input type="number"id="fecha" placeholder="1981">
+        <button id="guardar2">GUARDAR SETDOC</button>
+    </div>
+    <div class="contenedor">
+        <input type="text" id="input_collection" placeholder="coleccion">
+        <input type="text" id="input_id" placeholder="id documento">
+        <button id="buscar">Buscar</button>
+        <div id="resultado"></div>
+    </div>
 
     <script type="module" src="./js/index.js"></script> 
 </body>

@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
 
 :root{
-  --bg: #f9cfb4;         
+  --bg: #c8ff88;         
   --card: #ffffff;      
-  --muted: #5b5b5b;     
+  --muted: #9e9e9e;     
   --text: #1b1b1b;     
-  --focus: rgba(255,107,53,0.16);
+  --focus: rgba(141, 141, 141, 0.16);
   --radius: 12px;
-  --max-width: 980px;
   font-size: 18px;
 }
 
@@ -15,31 +14,30 @@
 html,body{height:100%}
 body{
   margin:0;
-  background:linear-gradient(180deg, var(--bg) 0%, #d0939b 100%);
+  background:linear-gradient(180deg, var(--bg) 0%, #80ffd5 100%);
   color:var(--text);
   font-family: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
   line-height:1.6;
   font-size:1rem;
 }
 
-.container{
-  max-width:var(--max-width);
-  margin:0 auto;
-  padding:60px;
+.contenedor{
+  margin:18;
+  padding:20px;
+  gap: 5rem;
 }
 
 .card{
-  background:linear-gradient(180deg, var(--card), #fff8f6);
-  border-radius:var(--radius);
-  padding:3rem;
+  background:linear-gradient(180deg, var(--card), #fffdc0);
+  padding:20px;
   box-shadow: 0 10px 30px rgba(106,92,255,0.06);
   border:1px solid rgba(106,92,255,0.06);
 }
 
 /* títulos */
 h1,h2{
-  font-family: Arial, Helvetica, sans-serif;
-  color:#a45959;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  color:#5c79e3;
   margin:0 0 12px 0;
   line-height:1.1;
 }
@@ -47,46 +45,27 @@ h1,h2{
 h1{font-size:2.4rem}  
 h2{font-size:1.6rem}
 
-.form-row{
-  display:flex;
-  gap: 1rem;
-  margin-bottom:16px;
-  flex-wrap:wrap;
-}
-.form-group{flex:1; min-width:200px}
-label{
-  display:block;
-  margin-bottom:8px;
-  font-weight:700;
-  color:#333;
-  font-size:0.98rem;
-}
 
 input[type="text"],
 input[type="number"],
-input[type="email"],
 textarea,
 select{
-  width:100%;
-  padding:14px 16px;
+  width:80%;
+  padding:20px 41px;
   height:48px;
-  border-radius:10px;
-  border:5px solid rgba(53, 0, 0, 0.177);
-  background:linear-gradient(180deg,#ffbdd5,#fffdfc);
+  border-radius:40px;
+  border:2px solid rgba(0, 53, 49, 0.177);
+  background:linear-gradient(180deg,#d3e8ff,#fffdfc);
   font-size:1.05rem;
   color:var(--text);
-  outline:none;
-  transition: box-shadow .14s ease, border-color .12s ease, transform .06s ease;
-  appearance: none;
 }
 
-#guardar,#guardar2{
-  display:inline-block;
+#guardar2,#buscar{
   padding:14px 22px;
-  border-radius:12px;
-  background: #b76973;
-  color:#ebe2e2;
-  border:none;
+  border-radius:22px;
+  background: #069994;
+  color:hsl(68, 100%, 85%);
+  border:5px solid rgb(117, 205, 232);
   cursor:pointer;
   font-weight:800;
   font-size:1rem;
@@ -95,15 +74,4 @@ select{
 }
 #guardar:hover{ transform:translateY(-3px); box-shadow: 0 18px 40px rgba(106,92,255,0.18) }
 #guardar2:hover{ transform:translateY(-3px); box-shadow: 0 18px 40px rgba(106,92,255,0.18) }
-
-@media (max-width:600px){
-  body{padding:18px}
-  h1{font-size:1.4rem}
-  .card{padding:18px}
-  input[type="text"],
-  input[type="date"],
-  textarea,
-  select{height:46px}
-  :root{font-size:17px}
-}
 
